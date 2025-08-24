@@ -1,3 +1,38 @@
+PHISHSENTRY
+
+PHISHSENTRY is a Python-based email phishing scanner with a PyQt5 GUI. It pulls recent emails over IMAP, detects suspicious URLs/keywords, checks links against VirusTotal, assigns a risk score, and exports results to JSON/CSV.
+
+Features
+
+Fetches the latest 20 emails from your inbox (IMAP)
+
+Detects suspicious URLs and phishing keywords
+
+Basic attachment risk flagging (by file extension)
+
+VirusTotal URL checks with simple rate-limit handling
+
+Export analysis to JSON or CSV
+
+Lightweight GUI (PyQt5)
+
+Requirements
+
+Python 3.11
+
+Windows / macOS / Linux (VMs supported)
+
+Email account with IMAP enabled
+
+VirusTotal API key
+
+Internet access
+
+Quick Start (VM-friendly)
+1) Clone the repo
+git clone https://github.com/vivekjhingan/PHISHSENTRY.git
+cd PHISHSENTRY/PHISHSENTRY
+
 2) Create & activate a virtual environment
 
 Windows (PowerShell)
@@ -91,8 +126,3 @@ Run in a VM and keep a dedicated project venv per environment.
 Retain exports (CSV/JSON) for auditing; consider centralizing logs later.
 
 Extend detection gradually: stronger HTML parsing, reputation feeds, hashing attachments, optional ML scoring.
-
-For educational and defensive security use only. Respect privacy and applicable laws when scanning emails.
-
-
-If anything still collapses, it means a backtick fence is missing—make sure every ``` block has a matching closing ```.
