@@ -1,128 +1,61 @@
-PHISHSENTRY
+# PHISHSENTRY
 
-PHISHSENTRY is a Python-based email phishing scanner with a PyQt5 GUI. It pulls recent emails over IMAP, detects suspicious URLs/keywords, checks links against VirusTotal, assigns a risk score, and exports results to JSON/CSV.
+A lightweight, PyQt5-based email phishing scanner. Pulls recent emails over IMAP, detects suspicious URLs/keywords, checks links against VirusTotal, assigns a risk score, and exports results to JSON/CSV.
 
-Features
+<p align="left">
+  <a href="https://www.python.org/downloads/release/python-3110/"><img alt="Python 3.11" src="https://img.shields.io/badge/python-3.11+-blue.svg"></a>
+  <img alt="Platforms" src="https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-informational">
+  <a href="https://vscode.dev/github/vivekjhingan/PHISHSENTRY"><img alt="Open in VS Code" src="https://img.shields.io/badge/Open%20in-VS%20Code-007acc"></a>
+</p>
 
-Fetches the latest 20 emails from your inbox (IMAP)
+---
 
-Detects suspicious URLs and phishing keywords
+## Table of Contents
 
-Basic attachment risk flagging (by file extension)
+- [Features](#features)
+- [Requirements](#requirements)
+- [Quick Start](#quick-start)
+- [Configuration](#configuration)
+  - [Gmail (example)](#gmail-example)
+  - [VirusTotal](#virustotal)
+- [Run & Debug with VS Code](#run--debug-with-vs-code)
+  - [Recommended Extensions](#recommended-extensions)
+  - [.vscode snippets](#vscode-snippets)
+- [Project Structure](#project-structure)
+- [Limitations](#limitations)
+- [Recommendations](#recommendations)
+- [Troubleshooting](#troubleshooting)
+- [Security & Privacy](#security--privacy)
 
-VirusTotal URL checks with simple rate-limit handling
+---
 
-Export analysis to JSON or CSV
+## Features
 
-Lightweight GUI (PyQt5)
+- Fetches the latest **20** emails from your inbox (IMAP)  
+- Detects suspicious **URLs** and **phishing keywords**  
+- Basic **attachment** risk flagging (by file extension)  
+- **VirusTotal** URL checks with simple rate-limit handling  
+- Export analysis to **JSON** or **CSV**  
+- **Lightweight GUI** (PyQt5)
 
-Requirements
+---
 
-Python 3.11
+## Requirements
 
-Windows / macOS / Linux (VMs supported)
+- Python **3.11**
+- Windows / macOS / Linux (VMs supported)
+- Email account with **IMAP** enabled
+- **VirusTotal** API key
+- Internet access
 
-Email account with IMAP enabled
+---
 
-VirusTotal API key
+## Quick Start
 
-Internet access
+> **Repo layout note**: the app’s entry point is `PHISHSENTRY/PHISHSENTRY/mainproject.py`.
 
-Quick Start (VM-friendly)
-1) Clone the repo
+### 1) Clone
+
+```bash
 git clone https://github.com/vivekjhingan/PHISHSENTRY.git
 cd PHISHSENTRY/PHISHSENTRY
-
-2) Create & activate a virtual environment
-
-Windows (PowerShell)
-
-python -m venv venv
-.\venv\Scripts\Activate.ps1
-
-
-If activation is blocked, allow scripts once:
-
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-
-
-macOS / Linux
-
-python3 -m venv venv
-source venv/bin/activate
-
-3) Install dependencies
-
-Create a file named requirements.txt (in the same folder as mainproject.py) with:
-
-PyQt5>=5.15.10
-requests>=2.31.0
-chardet>=5.2.0
-
-
-Then install:
-
-pip install -r requirements.txt
-
-4) Run the app
-python mainproject.py
-
-Configuration
-Gmail (example)
-
-Enable IMAP
-Gmail → Settings → See all settings → Forwarding and POP/IMAP → Enable IMAP.
-
-Use an App Password
-Google Account → Security → enable 2-Step Verification → App passwords → choose Mail → generate the 16-character password.
-
-Enter in the app’s credentials dialog:
-
-Email: your Gmail address
-
-Password: the App Password (not your normal password)
-
-IMAP Server: imap.gmail.com
-
-For other providers, use their IMAP server (e.g., Outlook/Office365: outlook.office365.com).
-
-VirusTotal
-
-Sign up at virustotal.com and copy your API key from your profile.
-
-Paste it into the VirusTotal API Key field when prompted.
-
-Project Structure
-PHISHSENTRY/
-└─ PHISHSENTRY/
-   ├─ mainproject.py          # PyQt5 GUI entry point
-   ├─ emailret.py             # IMAP connect/fetch + safe decoding
-   ├─ phishing_detector.py    # URL detection, score, attachment checks
-   ├─ report.py               # JSON/CSV exporters
-   └─ visual.py               # VirusTotal integration
-
-Limitations
-
-Latest 20 emails only: analyzes up to 20 recent messages by design.
-
-Plain-text oriented: complex HTML/inline content may be missed.
-
-Basic heuristics: scoring and URL/attachment checks are simple (keyword/extension based).
-
-VirusTotal rate limits: free API plans can throttle; the app retries briefly then skips.
-
-No OAuth flow: uses username + (preferably) App Password; enterprise OAuth not implemented.
-
-No file uploads to VT: attachments are not hashed/uploaded; only extensions are checked.
-
-Recommendations
-
-Use App Passwords (Gmail) or provider-specific secure credentials; never hard-code secrets.
-
-Refine rules over time: maintain allow/deny domain lists and adjust keyword sets to reduce false positives.
-
-Run in a VM and keep a dedicated project venv per environment.
-
-Retain exports (CSV/JSON) for auditing; consider centralizing logs later.
-
-Extend detection gradually: stronger HTML parsing, reputation feeds, hashing attachments, optional ML scoring.
