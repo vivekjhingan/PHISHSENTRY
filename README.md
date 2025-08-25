@@ -99,14 +99,14 @@ python mainproject.py
 
 ## Project Structure
 
+📁 PHISHSENTRY/  
+└── 📁 PHISHSENTRY/  
+   ├── 🖥️ mainproject.py        → PyQt5 GUI entry point  
+   ├── 📧 emailret.py           → IMAP connect/fetch + safe decoding  
+   ├── 🔍 phishing_detector.py  → URL detection, score, attachment checks  
+   ├── 📊 report.py             → JSON/CSV exporters  
+   └── 🧪 visual.py             → VirusTotal integration  
 
-PHISHSENTRY/
-└─ PHISHSENTRY/
-├─ mainproject.py # PyQt5 GUI entry point
-├─ emailret.py # IMAP connect/fetch + safe decoding
-├─ phishing_detector.py # URL detection, score, attachment checks
-├─ report.py # JSON/CSV exporters
-└─ visual.py # VirusTotal integration
 
 ---
 
