@@ -111,13 +111,13 @@ PHISHSENTRY/
 ---
 
 ## Limitations
-
-- **Latest 20 emails only** – analyzes up to 20 recent messages by design.  
-- **Plain-text oriented** – complex HTML/inline content may be missed.  
-- **Basic heuristics** – scoring and URL/attachment checks are simple (keyword/extension based).  
-- **VirusTotal rate limits** – free API plans can throttle; the app retries briefly then skips.  
-- **No OAuth flow** – uses username + (preferably) App Password; enterprise OAuth not implemented.  
-- **No file uploads to VT** – attachments are not hashed/uploaded; only extensions are checked.  
+- **Latest 20 emails only:** The app fetches and analyzes only the most recent 20 messages.
+- **Plain-text parsing:** Only the `text/plain` part is analyzed; HTML-only content/links may be missed.
+- **Attachments not extracted yet:** The app doesn’t pull attachments from emails; checks are filename-based only if provided.
+- **VirusTotal URL submit only:** URLs are submitted to VT (subject to free-tier rate limits); no file scanning or verdict polling in-app.
+- **Simple heuristics:** Keyword/extension rules are basic and may produce false positives/negatives.
+- **No OAuth:** Credentials are entered at runtime; OAuth/secure token flows aren’t implemented.
+ 
 
 ---
 
