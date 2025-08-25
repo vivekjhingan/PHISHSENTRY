@@ -71,64 +71,64 @@ pip install -r requirements.txt
 ```sh
 python mainproject.py
 ```
-Configuration
-Gmail (example)
-Enable IMAP
+## Configuration
 
-Gmail → Settings → See all settings → Forwarding and POP/IMAP → Enable IMAP.
+### Gmail (example)
 
-Use an App Password
+1. **Enable IMAP**
+   - Gmail → Settings → *See all settings* → **Forwarding and POP/IMAP** → Enable IMAP.
 
-Google Account → Security → enable 2-Step Verification → App passwords → choose Mail → generate the 16-character password.
+2. **Use an App Password**
+   - Google Account → **Security** → enable **2-Step Verification** → **App passwords** → choose *Mail* → generate the 16-character password.
 
-Enter in the app’s credentials dialog:
+3. **Enter credentials in the app dialog:**
+   - **Email:** your Gmail address  
+   - **Password:** the App Password (not your normal password)  
+   - **IMAP Server:** `imap.gmail.com`  
 
-Email: your Gmail address
+   *(For other providers, use their IMAP server. Example: Outlook/Office365 → `outlook.office365.com`)*
 
-Password: the App Password (not your normal password)
+---
 
-IMAP Server: imap.gmail.com
+### VirusTotal
 
-(For other providers, use their IMAP server, e.g., Outlook/Office365: outlook.office365.com)
+- Sign up at [VirusTotal](https://www.virustotal.com) and copy your API key from your profile.  
+- Paste it into the **VirusTotal API Key** field when prompted.
 
-VirusTotal
-Sign up at VirusTotal and copy your API key from your profile.
+---
 
-Paste it into the VirusTotal API Key field when prompted.
+## Project Structure
 
-Project Structure
-bash
-Copy
-Edit
+
 PHISHSENTRY/
 └─ PHISHSENTRY/
-   ├─ mainproject.py          # PyQt5 GUI entry point
-   ├─ emailret.py             # IMAP connect/fetch + safe decoding
-   ├─ phishing_detector.py    # URL detection, score, attachment checks
-   ├─ report.py               # JSON/CSV exporters
-   └─ visual.py               # VirusTotal integration
-Limitations
-Latest 20 emails only: analyzes up to 20 recent messages by design.
+├─ mainproject.py # PyQt5 GUI entry point
+├─ emailret.py # IMAP connect/fetch + safe decoding
+├─ phishing_detector.py # URL detection, score, attachment checks
+├─ report.py # JSON/CSV exporters
+└─ visual.py # VirusTotal integration
 
-Plain-text oriented: complex HTML/inline content may be missed.
+---
 
-Basic heuristics: scoring and URL/attachment checks are simple (keyword/extension based).
+## Limitations
 
-VirusTotal rate limits: free API plans can throttle; the app retries briefly then skips.
+- **Latest 20 emails only** – analyzes up to 20 recent messages by design.  
+- **Plain-text oriented** – complex HTML/inline content may be missed.  
+- **Basic heuristics** – scoring and URL/attachment checks are simple (keyword/extension based).  
+- **VirusTotal rate limits** – free API plans can throttle; the app retries briefly then skips.  
+- **No OAuth flow** – uses username + (preferably) App Password; enterprise OAuth not implemented.  
+- **No file uploads to VT** – attachments are not hashed/uploaded; only extensions are checked.  
 
-No OAuth flow: uses username + (preferably) App Password; enterprise OAuth not implemented.
+---
 
-No file uploads to VT: attachments are not hashed/uploaded; only extensions are checked.
+## Recommendations
 
-Recommendations
-Use App Passwords (Gmail) or provider-specific secure credentials; never hard-code secrets.
+- Use App Passwords (Gmail) or provider-specific secure credentials; never hard-code secrets.  
+- Refine rules over time (allow/deny domain lists, keyword sets) to reduce false positives.  
+- Run in a VM and keep a dedicated project `venv` per environment.  
+- Retain exports (CSV/JSON) for auditing; consider centralizing logs later.  
+- Extend detection gradually: stronger HTML parsing, reputation feeds, hashing attachments, optional ML scoring.  
 
-Refine rules over time: maintain allow/deny domain lists and adjust keyword sets to reduce false positives.
+---
 
-Run in a VM and keep a dedicated project venv per environment.
-
-Retain exports (CSV/JSON) for auditing; consider centralizing logs later.
-
-Extend detection gradually: stronger HTML parsing, reputation feeds, hashing attachments, optional ML scoring.
-
-⚠️ Note: For educational and defensive security use only. Respect privacy and applicable laws when scanning emails.
+⚠️ **Note:** For educational and defensive security use only. Respect privacy and applicable laws when scanning emails.
