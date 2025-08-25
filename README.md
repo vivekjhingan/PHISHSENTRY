@@ -54,13 +54,11 @@ source venv/bin/activate
 
 Create a file named `requirements.txt` (in the same folder as `mainproject.py`) with:
 
+```txt
 PyQt5>=5.15.10
 requests>=2.31.0
 chardet>=5.2.0
-
-csharp
-Copy
-Edit
+```
 
 Then install the dependencies with:
 
@@ -99,13 +97,13 @@ python mainproject.py
 
 ## Project Structure
 
-📁 PHISHSENTRY/  
-└── 📁 PHISHSENTRY/  
-   ├── 🖥️ mainproject.py        → PyQt5 GUI entry point  
-   ├── 📧 emailret.py           → IMAP connect/fetch + safe decoding  
-   ├── 🔍 phishing_detector.py  → URL detection, score, attachment checks  
-   ├── 📊 report.py             → JSON/CSV exporters  
-   └── 🧪 visual.py             → VirusTotal integration  
+PHISHSENTRY/  
+└── PHISHSENTRY/  
+   ├── mainproject.py        → PyQt5 GUI entry point  
+   ├── emailret.py           → IMAP connect/fetch + safe decoding  
+   ├── phishing_detector.py  → URL detection, score, attachment checks  
+   ├── report.py             → JSON/CSV exporters  
+   └── visual.py             → VirusTotal integration  
 
 
 ---
