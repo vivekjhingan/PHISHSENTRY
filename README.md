@@ -59,9 +59,11 @@ PyQt5>=5.15.10
 requests>=2.31.0
 chardet>=5.2.0
 ```
+### Install all dependencies in one command
 
-Then install the dependencies with:
-
+```sh
+pip install PyQt5>=5.15.10 requests>=2.31.0 chardet>=5.2.0
+```
 ```sh
 pip install -r requirements.txt
 ```
