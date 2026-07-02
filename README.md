@@ -7,7 +7,7 @@ It pulls recent emails over IMAP, detects suspicious URLs/keywords, checks links
 
 ## Features
 
-- Fetches the latest **20 emails** from your inbox (IMAP)  
+- Fetches latest **20 emails** from your inbox (IMAP)  
 - Detects suspicious **URLs** and **phishing keywords**  
 - Basic **attachment risk flagging** (by file extension)  
 - **VirusTotal** URL checks with simple rate-limit handling  
